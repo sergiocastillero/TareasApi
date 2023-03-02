@@ -1,0 +1,1 @@
+php cli.php '{"params":["peliculas", "id", 1], "body":"", "method": "GET"}'
