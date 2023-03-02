@@ -67,7 +67,6 @@
     <nav>
         <ul>
             <li><a href="http://localhost/frmk/main/" >Inici</a></li>
-            <li><a href="http://localhost/frmk/tasques/" >Lista de Tarea</a></li>
-
+            <li><a href="http://localhost/frmk/tasques/" >Llista de Tasques</a></li>
         </ul>
     </nav>

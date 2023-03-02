@@ -1,24 +1,24 @@
 <?php
-    Class Peliculas_model {
+    Class Tareas_model {
         private $db;
-        private $pelis;
+        private $tareas;
         public function __construct(){
             require_once("./model/connexio.php");
             $this->db=Connexio::connectar();
-            $this->pelis=array();
+            $this->tareas=array();
         }
 
-        public function getPelis(){
-            $consulta = "SELECT * FROM PELICULA";
+        public function getTareas(){
+            $consulta = "SELECT * FROM TAREA";
             $result = $this->db->query($consulta);
             while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
-                $this->pelis[]=$fila;
+                $this->tareas[]=$fila;
             }
-            return $this->pelis;
+            return $this->tareas;
         }
 
-        public function getPeliById($id){
-            $consulta = "SELECT * FROM PELICULA WHERE ID =". $id .";";
+        public function getTareaById($id){
+            $consulta = "SELECT * FROM TAREA WHERE ID =". $id .";";
             $result = $this->db->query($consulta);
             while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
                 return $fila;
@@ -26,48 +26,48 @@
             return null;
         }
 
-        public function getPelisByAnyo($anyo){
-            $consulta = "SELECT * FROM PELICULA WHERE ANYO =". $anyo .";";
+        public function getTareasByLista($lista_id){
+            $consulta = "SELECT * FROM TAREA WHERE LISTA_ID =". $lista_id .";";
             $result = $this->db->query($consulta);
             while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
-                $this->pelis[]=$fila;
+                $this->tareas[]=$fila;
             }
-            return $this->pelis;
+            return $this->tareas;
         }
 
-        public function getPelisByPuntuacion($baix, $alt){
-            $consulta = "SELECT * FROM PELICULA WHERE PUNTUACION >=". $baix ." AND PUNTUACION <=". $alt .";";
+        public function getTareasRealizadas(){
+            $consulta = "SELECT * FROM TAREA WHERE REALIZADA = true";
             $result = $this->db->query($consulta);
             while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
-                $this->pelis[]=$fila;
+                $this->tareas[]=$fila;
             }
-            return $this->pelis;
+            return $this->tareas;
         }
 
-        public function appendPelicula($pelicula){
+        public function appendTarea($tarea){
             $new_id = -1;
-            if ($pelicula){
-                $consulta = "SELECT ID FROM PELICULA ORDER BY ID DESC LIMIT 1;";
+            if ($tarea){
+                $consulta = "SELECT ID FROM TAREA ORDER BY ID DESC LIMIT 1;";
                 $result = $this->db->query($consulta);
                 $last_id = $result->fetch(PDO::FETCH_ASSOC)["ID"];
                 $new_id = $last_id + 1;
-                $consulta = "INSERT INTO PELICULA (ID, TITULO, ANYO, PUNTUACION, VOTOS) VALUES(:id, :titulo, :anyo, :puntuacion, :votos);";
+                $consulta = "INSERT INTO TAREA (ID, DESCRIPCION, FECHA_VENCIMIENTO, REALIZADA, LISTA_ID) VALUES(:id, :descripcion, :fecha_vencimiento, :realizada, :lista_id);";
                 $dades = [
                     'id'=>$new_id,
-                    'titulo'=>$pelicula->titulo,
-                    'anyo'=>$pelicula->anyo,
-                    'puntuacion'=>$pelicula->puntuacion,
-                    'votos'=>$pelicula->votos
+                    'descripcion'=>$tarea->descripcion,
+                    'fecha_vencimiento'=>$tarea->fecha_vencimiento,
+                    'realizada'=>$tarea->realizada,
+                    'lista_id'=>$tarea->lista_id
                 ];
                 $res_insert = $this->db->prepare($consulta)->execute($dades);
             }
             return $new_id;
         }
 
-        public function deletePeliById($id){
-            $consulta = "DELETE FROM PELICULA WHERE ID=?;";
+        public function deleteTareaById($id){
+            $consulta = "DELETE FROM TAREA WHERE ID=?;";
                 
             $res_delete = $this->db->prepare($consulta)->execute(array($id));
         }
     }
-?>
+?> 

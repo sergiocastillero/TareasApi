@@ -2,7 +2,7 @@
     class Connexio {
         public static function connectar(){
             try {
-                $db = new PDO("mysql:host=localhost;dbname=pelis", "isard", "pirineus");
+                $db = new PDO("mysql:host=localhost;dbname=tareas", "isard", "pirineus");
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $db->exec("SET CHARACTER SET UTF8");
             }
