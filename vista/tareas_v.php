@@ -67,3 +67,7 @@
     setTimeout(init, 1000);
 </script>
  -->
+<?php   
+    header("Content-Type: application/json; charset=utf-8");
+    echo json_encode($tareas).PHP_EOL; 
+?>

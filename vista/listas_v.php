@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <h3>LISTAS</h3>
 <p>Dessitjo que sigui del teu gust</p>
 <table id="listas">
@@ -52,3 +53,9 @@
 
     setTimeout(init, 1000);
 </script> -->
+=======
+<?php
+    header("Content-Type: application/json; charset=utf-8");
+    echo json_encode($listas).PHP_EOL; 
+?>
+>>>>>>> d082575 (recuperado)
