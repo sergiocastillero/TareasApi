@@ -1,4 +1,4 @@
-<!-- <h3>Benvingut a la pàgina principal del framework picat a pedra!</h3>
+<h3>Benvingut a la pàgina principal del framework picat a pedra!</h3>
 <p>Dessitjo que sigui del teu gust</p>
 <table id="tareas">
     <tr>
@@ -7,7 +7,6 @@
         <th>Data venciment</th>
         <th>Realitzada</th>
         <th>Llista</th>
-        <th>Eliminar</th>
     </tr>
 </table>
 <script>
@@ -26,11 +25,6 @@
             var cell_data_venciment = row.insertCell(2).innerHTML = data[i].FECHA_VENCIMIENTO;
             var cell_realitzada = row.insertCell(3).innerHTML = data[i].REALIZADA;
             var cell_llista = row.insertCell(4).innerHTML = data[i].LISTA_ID;
-            var cell_eliminar = row.insertCell(5);
-            var eliminar_btn = document.createElement("button");
-            eliminar_btn.innerHTML = "Eliminar";
-            eliminar_btn.setAttribute("onclick", "eliminarLista(" + data[i].ID + ")");
-            cell_eliminar.appendChild(eliminar_btn);
         }
     }
 
@@ -40,17 +34,5 @@
             .then(data => procesa_tareas(data));
     }
 
-    function eliminarLista(id) {
-        fetch("http://localhost/frmk/listas/id/" + id, {method: "DELETE"})
-            .then(response => {
-                if (response.status === 204) {
-                    var fila = document.querySelector("td:nth-child(1):contains('" + id + "')").parentNode;
-                    fila.parentNode.removeChild(fila);
-                } else {
-                    console.error("Error al eliminar lista " + id + ": " + response.statusText);
-                }
-            });
-    }
-
     setTimeout(init, 1000);
-</script> -->
+</script>

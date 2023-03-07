@@ -1,4 +1,4 @@
-<h3>LISTAS</h3>
+<!-- <h3>LISTAS</h3>
 <p>Dessitjo que sigui del teu gust</p>
 <table id="listas">
     <tr>
@@ -51,4 +51,4 @@
     }
 
     setTimeout(init, 1000);
-</script>
+</script> -->

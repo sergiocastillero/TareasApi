@@ -1,4 +1,4 @@
-<h3>TAREAS</h3>
+<!-- <h3>TAREAS</h3>
 <p>Desitjo que sigui del teu gust</p>
 <table id="tareas">
     <tr>
@@ -66,3 +66,4 @@
 
     setTimeout(init, 1000);
 </script>
+ -->
