@@ -7,7 +7,7 @@
         <th>Data venciment</th>
         <th>Realitzada</th>
         <th>Llista</th>
-        <th>Accions</th>
+        <th>Eliminar</th>
     </tr>
 </table>
 <script>
@@ -26,14 +26,11 @@
             var cell_data_venciment = row.insertCell(2).innerHTML = data[i].FECHA_VENCIMIENTO;
             var cell_realitzada = row.insertCell(3).innerHTML = data[i].REALIZADA;
             var cell_llista = row.insertCell(4).innerHTML = data[i].LISTA_ID;
-            var cell_accions = row.insertCell(5);
-            var btn_eliminar = document.createElement("button");
-            btn_eliminar.innerHTML = "Eliminar lista y tareas";
-            btn_eliminar.dataset.id = data[i].LISTA_ID;
-            btn_eliminar.addEventListener("click", function(){
-                eliminar_lista_tareas(this.dataset.id);
-            });
-            cell_accions.appendChild(btn_eliminar);
+            var cell_eliminar = row.insertCell(5);
+            var eliminar_btn = document.createElement("button");
+            eliminar_btn.innerHTML = "Eliminar";
+            eliminar_btn.setAttribute("onclick", "eliminarLista(" + data[i].ID + ")");
+            cell_eliminar.appendChild(eliminar_btn);
         }
     }
 
@@ -43,23 +40,16 @@
             .then(data => procesa_tareas(data));
     }
 
-    function eliminar_lista_tareas(id_lista){
-        fetch("http://localhost/frmk/listas/id/"+id_lista+"/", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "X-API-Key": "1234567890"
-            }
-        }).then(response => {
-            if (response.status == 204){
-                var filas = document.querySelectorAll("#tareas tr");
-                filas.forEach(function(fila){
-                    if (fila.cells[4].innerHTML == id_lista){
-                        fila.remove();
-                    }
-                });
-            }
-        });
+    function eliminarLista(id) {
+        fetch("http://localhost/frmk/listas/id/" + id, {method: "DELETE"})
+            .then(response => {
+                if (response.status === 204) {
+                    var fila = document.querySelector("td:nth-child(1):contains('" + id + "')").parentNode;
+                    fila.parentNode.removeChild(fila);
+                } else {
+                    console.error("Error al eliminar lista " + id + ": " + response.statusText);
+                }
+            });
     }
 
     setTimeout(init, 1000);
