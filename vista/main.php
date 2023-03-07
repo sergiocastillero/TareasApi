@@ -1,9 +1,3 @@
-<html>
-    <head>
-        <title>Framework picat a pedra</title>
-        <link rel="stylesheet" type="text/css" href="estils.css">
-    </head>
-    <body>
         <h3>Benvingut a la pàgina principal del framework picat a pedra!</h3>
         <p>Dessitjo que sigui del teu gust</p>
         <div>
