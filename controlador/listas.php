@@ -54,7 +54,7 @@
             }else{
                 switch (strtolower($params[0])){
                     case "id":
-                        $listas = $model->deleteListaById($params[1]);
+                        $resultado = $model->deleteListaById($params[1]);
                         break;
                     default:
                         echo "bad request";
