@@ -1,6 +1,6 @@
 <?php
     require_once("./model/listas_m.php");
-    class Tareas{    
+    class Listas{    
         public function __construct($params, $body){
             $method = array_shift($params);
             $x_api_key = array_shift($params);
