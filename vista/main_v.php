@@ -23,7 +23,7 @@
         console.log(data);
         var table = document.getElementById("tareas");
         for (var i=0;i < data.length; i++){
-            table.insertRow(1 + i);
+            var row = table.insertRow(1 + i);
             row.classList.add(i % 2 == 0 ? "fila_parell" : "fila_senar");
 
             var cell_id = row.insertCell(0);
@@ -57,7 +57,7 @@
         console.log(data);
         var table = document.getElementById("listas");
         for (var i=0;i < data.length; i++){
-            table.insertRow(1 + i);
+            var row = table.insertRow(1 + i);
             row.classList.add(i % 2 == 0 ? "fila_parell" : "fila_senar");
 
             var cell_id = row.insertCell(0);
