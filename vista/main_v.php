@@ -1,6 +1,6 @@
 <h3>Benvingut a la pàgina principal del framework picat a pedra!</h3>
 <p>Dessitjo que sigui del teu gust</p>
-<table id="listas">
+<table id="tareas">
     <tr>
         <th>Id</th>
         <th>Descripció</th>
@@ -10,9 +10,9 @@
     </tr>
 </table>
 <script>
-    function procesa_listas(data){
+    function procesa_tareas(data){
         for (var i=0;i < data.length; i++){
-            var row = document.getElementById("listas").insertRow(1 + i);
+            var row = document.getElementById("tareas").insertRow(1 + i);
             if (i%2==0){
                 row.classList.add("fila_parell");
             }else{
@@ -29,9 +29,9 @@
     }
 
     function init(){
-        fetch("http://localhost/frmk/listas/")
+        fetch("http://localhost/frmk/tareas/")
             .then(response => response.json())
-            .then(data => procesa_listas(data));
+            .then(data => procesa_tareas(data));
     }
 
     setTimeout(init, 1000);

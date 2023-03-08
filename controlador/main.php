@@ -27,7 +27,7 @@
 
         private function getMain($params){
             require_once 'vista/header.php';
-            require_once 'vista/main.php';
+            require_once 'vista/main_v.php';
         }
 
         private function putMain($params, $body){
