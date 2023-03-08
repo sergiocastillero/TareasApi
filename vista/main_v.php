@@ -3,7 +3,6 @@
     <tr>
         <th>Id</th>
         <th>Nom</th>
-        <th>Eliminar</th>
     </tr>
 </table>
 <h3>TASQUES</h3>
@@ -14,8 +13,6 @@
         <th>Data venciment</th>
         <th>Realitzada</th>
         <th>Llista</th>
-        <th>Eliminar</th>
-
     </tr>
 </table>
 <script>
@@ -45,10 +42,12 @@
             var cell_eliminar = row.insertCell(5);
             var eliminar_btn = document.createElement("button");
             eliminar_btn.innerHTML = "Eliminar";
+            eliminar_btn.dataset.id = data[i].ID; // agregamos el id de la tarea al botón de eliminar
             eliminar_btn.addEventListener("click", function() {
-                var id = this.parentNode.parentNode.cells[0].textContent;
+                var id = this.dataset.id; // obtenemos el id de la tarea desde el botón de eliminar
                 eliminarTarea(id);
             });
+            cell_eliminar.appendChild(eliminar_btn);
             cell_eliminar.appendChild(eliminar_btn);
         }
     }
@@ -90,27 +89,27 @@
     }
 
     function eliminarTarea(id) {
-        fetch(`http://localhost/frmk/tareas/id/${id}`, { method: "DELETE" })
-            .then(response => {
-                if (response.ok) {
-                    var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
-                    fila.parentNode.removeChild(fila);
-                } else {
-                    console.error(`Error al eliminar tarea ${id}: ${response.statusText}`);
-                }
-            })
-            .catch(error => console.error(error));
+    fetch(`http://localhost/frmk/tareas/id/${id}`, { method: "DELETE" })
+        .then(response => {
+            if (response.ok) {
+                var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
+                fila.parentNode.removeChild(fila);
+            } else {
+                console.error(`Error al eliminar tarea ${id}: ${response.statusText}`);
+            }
+        })
+        .catch(error => console.error(error));
     }
 
     function eliminarLista(id) {
         fetch(`http://localhost/frmk/listas/id/${id}`, { method: "DELETE" })
             .then(response => {
-                if (response.ok) {
-                    var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
-                    fila.parentNode.removeChild(fila);
-                } else {
-                    console.error(`Error al eliminar listas ${id}: ${response.statusText}`);
-                }
+            if (response.ok) {
+                var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
+                fila.parentNode.removeChild(fila);
+            } else {
+                console.error(`Error al eliminar lista ${id}: ${response.statusText}`);
+            }
             })
             .catch(error => console.error(error));
     }

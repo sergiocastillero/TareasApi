@@ -16,7 +16,7 @@
         ul li a{
             display: block;
             padding: 2px 6px;
-            margin: 0px;
+            margin: 15px 15px 15px 0px;
             background-color: #555555;
             text-decoration: none;
             text-align: center;
