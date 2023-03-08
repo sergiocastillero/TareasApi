@@ -46,7 +46,7 @@
             var eliminar_btn = document.createElement("button");
             eliminar_btn.innerHTML = "Eliminar";
             eliminar_btn.addEventListener("click", function() {
-                var id = data[i].ID;
+                var id = this.parentNode.parentNode.cells[0].textContent;
                 eliminarTarea(id);
             });
             cell_eliminar.appendChild(eliminar_btn);
@@ -70,7 +70,7 @@
             var eliminar_btn = document.createElement("button");
             eliminar_btn.innerHTML = "Eliminar";
             eliminar_btn.addEventListener("click", function() {
-                var id = data[i].ID;
+                var id = this.parentNode.parentNode.cells[0].textContent;
                 eliminarLista(id);
             });
             cell_eliminar.appendChild(eliminar_btn);
