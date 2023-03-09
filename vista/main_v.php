@@ -3,7 +3,13 @@
     <tr>
         <th>Id</th>
         <th>Nom</th>
-        <th>Eliminar</th>
+    </tr>
+    <tr>
+        <form action="GET">
+            <th><input for="id"></input></th>
+            <th><input for="nombre"></input></th>
+            <th><button>Afegir</button></th>
+        </form>
     </tr>
 </table>
 <h3>TASQUES</h3>
@@ -14,8 +20,16 @@
         <th>Data venciment</th>
         <th>Realitzada</th>
         <th>Llista</th>
-        <th>Eliminar</th>
-
+    </tr>
+    <tr>
+        <form action="GET">
+            <th><input for="id"></input></th>
+            <th><input for="descripcion"></input></th>
+            <th><input for="fecha_fin"></input></th>
+            <th><input for="realizada"></input></th>
+            <th><input for="lista"></input></th>
+            <th><button>Afegir</button></th>
+        </form>
     </tr>
 </table>
 <script>
@@ -25,6 +39,7 @@
         for (var i=0;i < data.length; i++){
             var row = table.insertRow(1 + i);
             row.classList.add(i % 2 == 0 ? "fila_parell" : "fila_senar");
+            row.setAttribute("data-id", data[i].ID);
 
             var cell_id = row.insertCell(0);
             cell_id.innerHTML = data[i].ID;
@@ -47,7 +62,7 @@
             eliminar_btn.innerHTML = "Eliminar";
             eliminar_btn.addEventListener("click", function() {
                 var id = this.parentNode.parentNode.cells[0].textContent;
-                eliminarTarea(id);
+                eliminarLista(id);
             });
             cell_eliminar.appendChild(eliminar_btn);
         }
@@ -90,27 +105,27 @@
     }
 
     function eliminarTarea(id) {
-        fetch(`http://localhost/frmk/tareas/id/${id}`, { method: "DELETE" })
-            .then(response => {
-                if (response.ok) {
-                    var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
-                    fila.parentNode.removeChild(fila);
-                } else {
-                    console.error(`Error al eliminar tarea ${id}: ${response.statusText}`);
-                }
-            })
-            .catch(error => console.error(error));
+    fetch(`http://localhost/frmk/tareas/id/${id}`, { method: "DELETE" })
+        .then(response => {
+            if (response.ok) {
+                var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
+                fila.parentNode.removeChild(fila);
+            } else {
+                console.error(`Error al eliminar tarea ${id}: ${response.statusText}`);
+            }
+        })
+        .catch(error => console.error(error));
     }
 
     function eliminarLista(id) {
         fetch(`http://localhost/frmk/listas/id/${id}`, { method: "DELETE" })
             .then(response => {
-                if (response.ok) {
-                    var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
-                    fila.parentNode.removeChild(fila);
-                } else {
-                    console.error(`Error al eliminar listas ${id}: ${response.statusText}`);
-                }
+            if (response.ok) {
+                var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
+                fila.parentNode.removeChild(fila);
+            } else {
+                console.error(`Error al eliminar lista ${id}: ${response.statusText}`);
+            }
             })
             .catch(error => console.error(error));
     }
