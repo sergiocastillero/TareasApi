@@ -60,6 +60,14 @@
         h3 {
             clear: both;
         }
+        .formAddList{
+            background-color: none;
+        }
+        .formAddList input{
+            width: 100%;
+            text-align: center;
+            border-radius: 6px;
+        }
     </style>
     <title>El meu framework</title>
 </head>
