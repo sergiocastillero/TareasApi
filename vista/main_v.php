@@ -4,6 +4,13 @@
         <th>Id</th>
         <th>Nom</th>
     </tr>
+    <tr>
+        <form action="GET">
+            <th><input for="id"></input></th>
+            <th><input for="nombre"></input></th>
+            <th><button>Afegir</button></th>
+        </form>
+    </tr>
 </table>
 <h3>TASQUES</h3>
 <table id="tareas">
@@ -14,6 +21,16 @@
         <th>Realitzada</th>
         <th>Llista</th>
     </tr>
+    <tr>
+        <form action="GET">
+            <th><input for="id"></input></th>
+            <th><input for="descripcion"></input></th>
+            <th><input for="fecha_fin"></input></th>
+            <th><input for="realizada"></input></th>
+            <th><input for="lista"></input></th>
+            <th><button>Afegir</button></th>
+        </form>
+    </tr>
 </table>
 <script>
     function procesa_tareas(data){
@@ -22,6 +39,7 @@
         for (var i=0;i < data.length; i++){
             var row = table.insertRow(1 + i);
             row.classList.add(i % 2 == 0 ? "fila_parell" : "fila_senar");
+            row.setAttribute("data-id", data[i].ID);
 
             var cell_id = row.insertCell(0);
             cell_id.innerHTML = data[i].ID;
@@ -42,12 +60,10 @@
             var cell_eliminar = row.insertCell(5);
             var eliminar_btn = document.createElement("button");
             eliminar_btn.innerHTML = "Eliminar";
-            eliminar_btn.dataset.id = data[i].ID; // agregamos el id de la tarea al botón de eliminar
             eliminar_btn.addEventListener("click", function() {
-                var id = this.dataset.id; // obtenemos el id de la tarea desde el botón de eliminar
-                eliminarTarea(id);
+                var id = this.parentNode.parentNode.cells[0].textContent;
+                eliminarLista(id);
             });
-            cell_eliminar.appendChild(eliminar_btn);
             cell_eliminar.appendChild(eliminar_btn);
         }
     }
