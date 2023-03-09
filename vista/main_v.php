@@ -4,7 +4,7 @@
         <th>Id</th>
         <th>Nom</th>
     </tr>
-    <tr>
+    <tr id="formAddList">
         <form action="GET">
             <th><input for="id"></input></th>
             <th><input for="nombre"></input></th>
