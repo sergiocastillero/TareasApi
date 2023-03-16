@@ -18,7 +18,7 @@
         <th>Id</th>
         <th>Descripció</th>
         <th>Data venciment</th>
-        <th>Realitzada</th>
+        <th>Realitzada</th><i class="fa-regular fa-magnifying-glass"></i>
         <th>Llista</th>
     </tr>
     <tr>
@@ -120,9 +120,7 @@
     function eliminarLista(id) {
         fetch(`http://localhost/frmk/listas/id/${id}`, { method: "DELETE" })
             .then(response => {
-            if (response.ok) {
-                var fila = document.querySelector(`td:nth-child(1):contains('${id}')`).parentNode;
-                fila.parentNode.removeChild(fila);
+            if (response.ok) { windows.location.href = "http://localhost/frmk/main";
             } else {
                 console.error(`Error al eliminar lista ${id}: ${response.statusText}`);
             }

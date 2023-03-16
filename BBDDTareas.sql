@@ -4,12 +4,23 @@ USE tareas;
 DROP TABLE if exists TAREA;
 DROP TABLE if exists LISTA;
 DROP TABLE if exists USUARIO;
+DROP TABLE if exists SESSION;
+
 
 -- Tabla de usuarios
 CREATE TABLE USUARIO(
 ID integer primary key,
 USERNAME VARCHAR(35),
 PASSWORD VARCHAR(100)
+);
+
+-- Tabla sessión de usuarios
+CREATE TABLE SESSION(
+ID integer primary key,
+USER_ID INTEGER,
+TOKEN VARCHAR(100),
+EXPIRATION_DATE TIMESTAMP,
+CONSTRAINT FK_SESSION_USUARIO FOREIGN KEY (USER_ID) REFERENCES USUARIO(ID)
 );
 
 -- Tabla de listas de tareas
