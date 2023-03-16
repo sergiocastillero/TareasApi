@@ -73,18 +73,9 @@
 </head>
 <body>
     <nav>
-        <ul><!-- 
+        <ul>
             <li><a href="http://localhost/frmk/main/" >Inici</a></li>
             <li><a href="http://localhost/frmk/listas/" >Llistes JSON</a></li>
             <li><a href="http://localhost/frmk/tareas/" >Tasques JSON</a></li>
-         --></ul>
-         <?php
-            session_start();
-            if (!isset($_SESSION['user_id'])) {
-                header("Location: login.php");
-                die();
-            }
-        ?>
-
+        </ul>
     </nav>
-

@@ -36,7 +36,7 @@
                         echo "bad request";
                 }
             }
-            require_once("./vista/listas_v.php");
+            require_once("./view/listas_v.php");
         }
 
         private function postLista($params, $body){
@@ -44,7 +44,7 @@
             $newId = $model->appendLista($body);
             $listas = $model->getListaById($newId);
             http_response_code(201);
-            require_once("./vista/listas_v.php");
+            require_once("./view/listas_v.php");
         }
 
         private function deleteLista($params){
