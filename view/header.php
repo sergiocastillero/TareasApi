@@ -60,11 +60,10 @@
         h3 {
             clear: both;
         }
-        .formAddList{
-            background-color: none;
+        .formAddList th{
+            background-color: white;
         }
-        .formAddList input{
-            width: 100%;
+        .formAddList th input{
             text-align: center;
             border-radius: 6px;
         }
@@ -73,9 +72,9 @@
 </head>
 <body>
     <nav>
-        <ul>
+        <!-- <ul>
             <li><a href="http://localhost/frmk/main/" >Inici</a></li>
             <li><a href="http://localhost/frmk/listas/" >Llistes JSON</a></li>
             <li><a href="http://localhost/frmk/tareas/" >Tasques JSON</a></li>
-        </ul>
+        </ul> -->
     </nav>

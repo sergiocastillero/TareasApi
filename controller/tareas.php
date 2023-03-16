@@ -36,7 +36,7 @@
                         echo "bad request";
                 }
             }
-            require_once("./vista/tareas_v.php");
+            require_once("./view/tareas_v.php");
         }
 
         private function postTarea($params, $body){
@@ -44,7 +44,7 @@
             $newId = $model->appendTarea($body);
             $tareas = $model->getTareaById($newId);
             http_response_code(201);
-            require_once("./vista/tareas_v.php");
+            require_once("./view/tareas_v.php");
         }
 
         private function deleteTarea($params){

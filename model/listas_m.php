@@ -11,6 +11,9 @@ class Listas_model {
     public function getListas(){
         $consulta = "SELECT * FROM LISTA";
         $result = $this->db->query($consulta);
+        if (!$result) {
+            throw new Exception("Error al obtener las listas: " . $this->db->errorInfo()[2]);
+        }
         while ($fila=$result->fetch(PDO::FETCH_ASSOC)){
             $this->listas[]=$fila;
         }
